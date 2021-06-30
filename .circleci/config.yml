@@ -1,0 +1,42 @@
+version: 2.1
+
+workflows:
+  PR_workflow:
+    when: << pipeline.parameters.pr_from_gh >>
+    jobs:
+      - job1
+
+  commit_workflow:
+    jobs:
+      - job1
+
+jobs:
+  job1:
+    executor: base
+    steps:
+      - run: echo "hello from job1"
+
+  pr_job:
+    executor: base
+    steps:
+      - run: echo "hello there was a PR"
+
+
+executors:
+  base:
+    docker: 
+      - image: cimg/base:stable
+
+parameters:
+  pr_from_gh:
+    type: boolean
+    default: false
+  committer:
+    type: string
+    default: "someone"
+  base:
+    type: string
+    default: "dev"
+  SHA:
+    type: string
+    default: "123"
