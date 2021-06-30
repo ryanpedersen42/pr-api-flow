@@ -23,11 +23,36 @@ jobs:
     steps:
       - run: echo "hello there was a PR"
       - run: echo "<< pipeline.parameters.committer >> << pipeline.parameters.base >> << pipeline.parameters.SHA >>"
-
+      - run:
+          # https://docs.github.com/en/github/searching-for-information-on-github/searching-on-github/searching-issues-and-pull-requests#search-by-commit-sha
+          name: Get PR number from hash pipeline param 
+          command: |
+            echo "use the above API"
+      - run:
+          name: Get PR Info
+          # https://circleci.com/developer/orbs/orb/narrativescience/ghpr#commands-get-pr-info
+          command: |
+            echo "customize that above command to use the pipeline parameter PR number"
+      - run: 
+          name: Run steps needed after PR info is here
+          command: |
+            echo "some tests"    
+      - run:
+          name: Interact with the bot
+          command: |
+            echo "some commands here to interact with the bot"  
+      - run: 
+          name: Or send only on failure
+          command: |
+            echo "interact with bot"
+          when: on_fail
 executors:
   base:
     docker: 
       - image: cimg/base:stable
+
+orbs:
+  ghpr: narrativescience/ghpr@1.1.1
 
 parameters:
   pr_from_gh:
