@@ -23,11 +23,19 @@ jobs:
     steps:
       - run: echo "hello there was a PR"
       - run: echo "<< pipeline.parameters.committer >> << pipeline.parameters.base >> << pipeline.parameters.SHA >>"
+      - command:
+          name: Get PR Info
+          # https://circleci.com/developer/orbs/orb/narrativescience/ghpr#commands-get-pr-info
+          command: |
+            echo "customize that above command to use the pipeline parameter PR number"
 
 executors:
   base:
     docker: 
       - image: cimg/base:stable
+
+orbs:
+  ghpr: narrativescience/ghpr@1.1.1
 
 parameters:
   pr_from_gh:
@@ -42,3 +50,6 @@ parameters:
   SHA:
     type: string
     default: "123"
+  pr_number:
+    type: integer
+    default: 1
