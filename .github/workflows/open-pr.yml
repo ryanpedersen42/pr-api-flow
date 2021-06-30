@@ -1,8 +1,6 @@
 name: open_pr
 
-on: 
-  pull_request:
-    types: [opened]
+on: pull_request
     
 # -- or --
 # on: pull_request
@@ -20,8 +18,11 @@ jobs:
             --url https://circleci.com/api/v2/project/gh/ryanpedersen42/pr-api-flow/pipeline \
             --header 'content-type: application/json' \
             --header 'Circle-Token: ${{ secrets.CIRCLE_TOKEN }}' \
-            --data '{"branch":"some_branch","parameters":{"pr_from_gh":true, "committer":${{ env.GITHUB_ACTOR }}, "base": ${{ env.GITHUB_BASE_REF }}, "SHA":${{ env.GITHUB_SHA }} }}'
+            --data '{"parameters":{"pr_from_gh":true}}'
             
+
 # potential parameters that we can pass through above are here
 # https://docs.github.com/en/actions/reference/environment-variables#default-environment-variables
 # i.e., GITHUB_ACTOR, GITHUB_SHA, GITHUB_REF, GITHUB_HEAD_REF, GITHUB_BASE_REF
+
+# --data '{"parameters":{"pr_from_gh":true, "committer":${{ env.GITHUB_ACTOR }}, "base": ${{ env.GITHUB_BASE_REF }}, "SHA":${{ env.GITHUB_SHA }} }}'
