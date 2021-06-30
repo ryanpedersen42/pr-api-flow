@@ -19,7 +19,6 @@ jobs:
             --header 'content-type: application/json' \
             --header 'Circle-Token: ${{ secrets.CIRCLE_TOKEN }}' \
             --data '{"parameters":{"pr_from_gh":true}}'
-            
 
 # potential parameters that we can pass through above are here
 # https://docs.github.com/en/actions/reference/environment-variables#default-environment-variables
