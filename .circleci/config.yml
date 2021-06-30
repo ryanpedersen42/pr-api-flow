@@ -22,7 +22,7 @@ jobs:
     executor: base
     steps:
       - run: echo "hello there was a PR"
-      - run: echo "<< pipeline.parameters.committer >> << pipeline.parameters.base >> << pipeline.parameters.SHA >>""
+      - run: echo "<< pipeline.parameters.committer >> << pipeline.parameters.base >> << pipeline.parameters.SHA >>"
 
 executors:
   base:
