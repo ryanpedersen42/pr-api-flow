@@ -4,7 +4,7 @@ workflows:
   PR_workflow:
     when: << pipeline.parameters.pr_from_gh >>
     jobs:
-      - job1
+      - pr_job
 
   commit_workflow:
     jobs:
