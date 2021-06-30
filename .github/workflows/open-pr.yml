@@ -18,7 +18,7 @@ jobs:
             --url https://circleci.com/api/v2/project/gh/ryanpedersen42/pr-api-flow/pipeline \
             --header 'content-type: application/json' \
             --header 'Circle-Token: ${{ secrets.CIRCLE_TOKEN }}' \
-            --data '{"parameters":{"pr_from_gh":true, "committer":"'"$GITHUB_ACTOR"'" }}'
+            --data '{"parameters":{"pr_from_gh":true, "committer":"'"$GITHUB_ACTOR"'", "base":"'"$GITHUB_BASE_REF"'", "SHA":"'"$GITHUB_SHA"'" }}'
 
 # potential parameters that we can pass through above are here
 # https://docs.github.com/en/actions/reference/environment-variables#default-environment-variables
