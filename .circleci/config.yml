@@ -67,6 +67,3 @@ parameters:
   SHA:
     type: string
     default: "123"
-  pr_number:
-    type: integer
-    default: 1
