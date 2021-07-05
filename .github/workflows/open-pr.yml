@@ -1,9 +1,6 @@
 name: open_pr
 
 on: pull_request
-    
-# -- or --
-# on: pull_request
 
 jobs:
   build:
