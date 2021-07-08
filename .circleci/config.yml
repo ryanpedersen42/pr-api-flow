@@ -2,13 +2,13 @@ version: 2.1
 
 workflows:
   PR_workflow:
-    when: << pipeline.parameters.pr_from_gh >>
+    when: << pipeline.parameters.pr_webhook >>
     jobs:
       - pr_job
 
   commit_workflow:
     when: 
-      not: << pipeline.parameters.pr_from_gh >>
+      not: << pipeline.parameters.pr_webhook >>
     jobs:
       - job1
 
@@ -22,7 +22,7 @@ jobs:
     executor: base
     steps:
       - run: echo "hello there was a PR"
-      - run: echo "<< pipeline.parameters.committer >> << pipeline.parameters.base >> << pipeline.parameters.SHA >>"
+      - run: echo "<< pipeline.parameters.pr_webhook >> << pipeline.parameters.pr_base >> << pipeline.parameters.pr_sha >> << pipeline.parameters.pr_number >> << pipeline.parameters.pr_action >> "
       - run:
           # https://docs.github.com/en/github/searching-for-information-on-github/searching-on-github/searching-issues-and-pull-requests#search-by-commit-sha
           name: Get PR number from hash pipeline param 
@@ -55,15 +55,21 @@ orbs:
   ghpr: narrativescience/ghpr@1.1.1
 
 parameters:
-  pr_from_gh:
+  pr_webhook:
     type: boolean
     default: false
-  committer:
+  pr_user:
     type: string
-    default: "someone"
-  base:
+    default: "hueylewis"
+  pr_base:
     type: string
     default: "dev"
-  SHA:
+  pr_sha:
     type: string
     default: "123"
+  pr_number:
+    type: integer
+    default: 1
+  pr_action:
+    type: string
+    default: "opened"
