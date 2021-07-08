@@ -65,10 +65,10 @@ parameters:
     type: string
     default: "dev"
   pr_sha:
-    type: integer
+    type: string
     default: 123
   pr_number:
-    type: integer
+    type: string
     default: 1
   pr_action:
     type: string
