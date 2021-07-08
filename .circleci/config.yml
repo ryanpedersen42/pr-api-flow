@@ -66,10 +66,10 @@ parameters:
     default: "dev"
   pr_sha:
     type: string
-    default: 123
+    default: "123"
   pr_number:
     type: string
-    default: 1
+    default: "1"
   pr_action:
     type: string
     default: "opened"
