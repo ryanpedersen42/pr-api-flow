@@ -2,13 +2,13 @@ version: 2.1
 
 workflows:
   PR_workflow:
-    when: << pipeline.parameters.pr_from_gh >>
+    when: << pipeline.parameters.pr_webhook >>
     jobs:
       - pr_job
 
   commit_workflow:
     when: 
-      not: << pipeline.parameters.pr_from_gh >>
+      not: << pipeline.parameters.pr_webhook >>
     jobs:
       - job1
 
