@@ -68,8 +68,8 @@ parameters:
     type: string
     default: "123"
   pr_number:
-    type: string
-    default: "1"
+    type: integer
+    default: 1
   pr_action:
     type: string
     default: "opened"
