@@ -73,3 +73,6 @@ parameters:
   pr_action:
     type: string
     default: "opened"
+  pr_commit_message:
+    type: string
+    default: "the news"
